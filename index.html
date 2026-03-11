@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rutik Kashyap | Guidewire Specialist</title>
+    <style>
+        :root {
+            --bg: #020617;
+            --surface: #0f172a;
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.15);
+            --gold: #fbbf24;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10%;
+            background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+            .nav-links a {
+                text-decoration: none;
+                color: var(--text-secondary);
+                font-size: 0.8rem;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                transition: 0.3s;
+            }
+
+                .nav-links a:hover {
+                    color: var(--accent);
+                }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+            .hero .label {
+                color: var(--accent);
+                font-family: monospace;
+                font-size: 1.1rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero h1 {
+                font-size: clamp(3rem, 8vw, 5.5rem);
+                font-weight: 800;
+                line-height: 1;
+                margin-bottom: 1.5rem;
+                letter-spacing: -2px;
+            }
+
+            .hero p {
+                font-size: 1.25rem;
+                color: var(--text-secondary);
+                max-width: 650px;
+                margin-bottom: 3rem;
+            }
+
+        /* Sections */
+        section {
+            padding: 120px 0;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: 1s ease-out;
+        }
+
+            section.reveal {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        h2.section-num {
+            color: var(--accent);
+            font-family: monospace;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        h2.section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Experience Timeline */
+        .exp-card {
+            background: var(--surface);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid #1e293b;
+            margin-bottom: 2rem;
+            position: relative;
+            transition: 0.4s;
+        }
+
+            .exp-card:hover {
+                border-color: var(--accent);
+                box-shadow: 0 10px 30px -15px rgba(2, 6, 23, 0.7);
+            }
+
+        .exp-role {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .exp-meta {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .exp-card ul {
+            padding-left: 20px;
+            color: var(--text-secondary);
+        }
+
+        .exp-card li {
+            margin-bottom: 10px;
+        }
+
+        /* Skills Grid */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-group h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            text-transform: uppercase;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            background: #1e293b;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            border: 1px solid #334155;
+        }
+
+        /* Project Showcase */
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .project-card::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 4px;
+                height: 100%;
+                background: var(--accent);
+            }
+
+        /* Awards */
+        .award-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: var(--accent-glow);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--gold);
+        }
+
+        /* CTA */
+        .btn {
+            display: inline-block;
+            padding: 18px 34px;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+            .btn:hover {
+                background: var(--accent-glow);
+            }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div style="font-weight: 900; letter-spacing: -1px; font-size: 1.5rem;">RK.</div>
+        <ul class="nav-links">
+            <li><a href="#about">01. About</a></li>
+            <li><a href="#experience">02. Experience</a></li>
+            <li><a href="#projects">03. Projects</a></li>
+            <li><a href="#contact">04. Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section class="hero reveal">
+            <span class="label">Innovating P&C Insurance</span>
+            <h1>Rutik Kashyap<span style="color:var(--accent)">.</span></h1>
+            <p>A Guidewire Specialist focused on building robust, scalable insurance solutions. Currently optimizing ClaimCenter ecosystems at <span style="color:white">Cognizant</span>.</p>
+            <div><a href="#experience" class="btn">Explore Professional History</a></div>
+        </section>
+
+        <section id="about">
+            <h2 class="section-num">01. Summary</h2>
+            <h2 class="section-title">Engineered for Success</h2>
+            <div class="exp-card">
+                <p>With 4+ years of specialized experience in **Gosu** and **Guidewire Studio**, I bridge the gap between complex insurance requirements and high-performance technical implementation. My work with global giants like QBE and ICare has refined my ability to lead technical designs, conduct root cause analysis, and mentor high-performing teams.</p>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2 class="section-num">02. Professional Path</h2>
+            <h2 class="section-title">Where I've Worked</h2>
+
+            <div class="exp-card">
+                <span class="exp-meta">2023 — PRESENT</span>
+                <h3 class="exp-role">Product Specialist - Tech <span style="color:var(--text-secondary)">@ Cognizant</span></h3>
+                <ul>
+                    <li><strong>Key Client:</strong> ICare (Workers Compensation LOB).</li>
+                    <li>Orchestrated full-cycle **ClaimCenter** configuration, from PCF screen enhancement to complex Gosu rule logic.</li>
+                    <li>Developed **Gunit** frameworks to ensure zero-defect production releases.</li>
+                    <li>Lead technical mentor providing **Knowledge Transfer (KT)** and code reviews for cross-functional teams.</li>
+                </ul>
+            </div>
+
+            <div class="exp-card">
+                <span class="exp-meta">2021 — 2023</span>
+                <h3 class="exp-role">Jr. Specialist & Trainee <span style="color:var(--text-secondary)">@ Cognizant</span></h3>
+                <ul>
+                    <li><strong>Key Client:</strong> QBE (Homeowners & Motor LOBs).</li>
+                    <li>Mastered **PolicyCenter** configuration, modifying container widgets (DVs, LVs, CVs) for streamlined underwriting.</li>
+                    <li>Engineered validation methods that reduced application processing time.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2 class="section-num">03. Impact</h2>
+            <h2 class="section-title">Entrepreneurship & Innovation</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>Toodle</h3>
+                    <p style="color:var(--accent); font-size: 0.8rem; margin-bottom: 1rem;">CO-FOUNDER | 2018 - 2021</p>
+                    <p>An educational disruptor providing free access to university-level academic resources, serving thousands of students with curated notes and video lectures.</p>
+                </div>
+                <div class="project-card">
+                    <h3>TriBie</h3>
+                    <p style="color:var(--accent); font-size: 0.8rem; margin-bottom: 1rem;">INDIGENOUS E-MARKET</p>
+                    <p>A social-impact platform connecting global consumers to tribal heritage through a direct-to-consumer digital marketplace for handmade goods.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2 class="section-num">04. Technical Arsenal</h2>
+            <div class="skills-container">
+                <div class="skill-group">
+                    <h3>Core Domain</h3>
+                    <div class="tag-list">
+                        <span class="tag">Guidewire CC/PC</span>
+                        <span class="tag">Gosu</span>
+                        <span class="tag">Insurance Suite</span>
+                        <span class="tag">P&C Expertise</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h3>Engineering</h3>
+                    <div class="tag-list">
+                        <span class="tag">Core Java</span>
+                        <span class="tag">MySQL</span>
+                        <span class="tag">SOAP UI</span>
+                        <span class="tag">SSMS</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h3>DevOps & Cloud</h3>
+                    <div class="tag-list">
+                        <span class="tag">Azure AI-900</span>
+                        <span class="tag">Azure AZ-900</span>
+                        <span class="tag">BitBucket</span>
+                        <span class="tag">Jenkins</span>
+                        <span class="tag">Jira</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="awards">
+            <h2 class="section-num">05. Recognition</h2>
+            <div class="award-row">
+                <span style="font-size: 1.5rem;">🏆</span>
+                <div>
+                    <strong>Cognizant Excellence Award (2024)</strong><br>
+                    <small>"Doing the right thing, the right way"</small>
+                </div>
+            </div>
+            <div class="award-row">
+                <span style="font-size: 1.5rem;">🏆</span>
+                <div>
+                    <strong>Cognizant Excellence Award (2023)</strong><br>
+                    <small>"Seeking data, building knowledge"</small>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" style="text-align: center;">
+            <h2 class="section-title">Get In Touch</h2>
+            <p style="margin-bottom: 2rem;">I'm currently based in <span style="color:white">Kolkata, India</span> and open to global opportunities.</p>
+            <a href="mailto:rkashyap2110@gmail.com" class="btn">rkashyap2110@gmail.com</a>
+            <div style="margin-top: 3rem; color: var(--text-secondary); font-size: 0.9rem;">
+                <p>Phone: 8349821102</p>
+                <p>English Proficiency: C2 (EF SET)</p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('reveal');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('section').forEach(s => observer.observe(s));
+    </script>
+</body>
+</html>
+
